@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Level Failed! | Vixel Games</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Bebas+Neue&display=swap');
+
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: 'Bebas Neue', 'Comic Sans MS', cursive, sans-serif; /* Goofy and bold fallback */
+            background-color: #C0392B; /* A vibrant, slightly darker red */
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Prevent scrollbars if content slightly exceeds viewport */
+            text-align: center;
+            line-height: 1.5;
+            position: relative;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iNzUiIHZpZXdCb3g9IjAgMCA3NSA3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iIzkyMjgxYiIgZD0iTTAgMGg3NXY3NUgweiIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMzcuNXYzNy41SDB6TTM3LjUgMzcuNUg3NXYzNy41SDE2LjM1eiIgZmlsbD0iI0EzMzYyNyIvPgogICAgPC9nPgo8L3N2Zz4='); /* Subtle pixel grid background */
+            background-size: 50px 50px;
+            animation: backgroundShift 30s linear infinite; /* Slowly move the background */
+        }
+
+        /* Overlay for content readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker semi-transparent background for the message box */
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.9), 0 0 20px rgba(255, 255, 0, 0.7); /* Red and yellow glow */
+            border: 6px solid #FFD700; /* Gold border for a "boss level" feel */
+            animation: shake 0.8s ease-in-out infinite alternate; /* Subtle shake effect */
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive; /* Pixelated font for main title */
+            font-size: 3.5em; /* Larger for impact */
+            margin-bottom: 25px;
+            color: #FF0000; /* Bright red for error */
+            text-shadow: 
+                -3px -3px 0 #FFF, 
+                3px -3px 0 #FFF, 
+                -3px 3px 0 #FFF, 
+                3px 3px 0 #FFF,
+                5px 5px 0px #8B0000; /* White outline, then a dark red drop shadow */
+            transform: rotate(-5deg); /* Slightly tilted for dynamic feel */
+            animation: bounce 0.8s infinite alternate, glitchEffect 1.5s infinite alternate; /* Bounce and glitch */
+            line-height: 1; /* Keep lines tight for pixel font */
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2em;
+            color: #FFD700; /* Gold for "Vixel Games" */
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #E0E0E0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #FFF;
+        }
+
+        a {
+            color: #00FFFF; /* Cyan for links, like a power-up */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        a:hover {
+            color: #FF00FF; /* Magenta on hover */
+            text-shadow: 0 0 15px #FF00FF, 0 0 5px #FF00FF; /* Intense glow */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Button Styling */
+        .action-button {
+            display: inline-block;
+            background-color: #FF4500; /* Orange-red button */
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 5px 5px 0px #8B0000; /* 3D effect */
+            border: none;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1; /* Keep pixel font tight */
+        }
+
+        .action-button:hover {
+            background-color: #FF6347;
+            transform: translateY(-3px) translateX(-3px); /* "Pressing" effect */
+            box-shadow: 8px 8px 0px #CD5C5C;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        /* Keyframe Animations */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            25% { transform: translate(-1px, -2px) rotate(-0.5deg); }
+            50% { transform: translate(1px, -1px) rotate(0.5deg); }
+            75% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+            100% { transform: translate(1px, 1px) rotate(0deg); }
+        }
+
+        @keyframes glitchEffect {
+            0% { text-shadow: -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF, 5px 5px 0px #8B0000; }
+            20% { text-shadow: -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF, 2px 2px 0 #FFF, 4px 4px 0px #8B0000, 1px 1px 0px rgba(0,255,255,0.7); }
+            40% { text-shadow: -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF, 5px 5px 0px #8B0000; }
+            60% { text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF, 3px 3px 0px #8B0000, -2px -2px 0px rgba(255,0,255,0.7); }
+            80% { text-shadow: -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF, 5px 5px 0px #8B0000; }
+            100% { text-shadow: -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF, 5px 5px 0px #8B0000; }
+        }
+
+        @keyframes bounce {
+            0% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-6deg) translateY(-5px); }
+            100% { transform: rotate(-5deg) translateY(0); }
+        }
+
+        @keyframes backgroundShift {
+            from { background-position: 0 0; }
+            to { background-position: 100px 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ERROR 404: LEVEL FAILED!</h1>
+        <h2>A message from Vixel Games!</h2>
+        <p>Woah there, adventurer! It looks like you've wandered off the map, straight into the dreaded "Page Not Found" zone!</p>
+        <p>Our highly trained (and slightly frantic) pixel-gnomes at <strong>Vixel Games</strong> are currently attempting to re-assemble the missing data chunks. They might be distracted by a shiny coin.</p>
+
+        <p><strong>What can a brave player like you do?</strong></p>
+        <ul>
+            <li>
+                You can try the ancient technique of <strong><a href="#" onclick="window.close(); return false;">closing this window</a></strong> and hoping it fixes everything (it's like hitting the 'reset' button on your console!).
+            </li>
+            <li>
+                Or, if you suspect this is a critical bug in *our* incredibly awesome game, please <strong><a href="mailto:support@vixelgames.com?subject=Vixel%20Games%20404%20Bug%20Report&body=Hey%20Vixel%20Games%20Support%2C%0A%0AI%20stumbled%20upon%20a%20404%20page.%20Here's%20what%20happened%3A%0A%0A%5BDescribe%20how%20you%20got%20here%2C%20e.g.%20what%20link%20you%20clicked%2C%20what%20you%20were%20trying%20to%20do%5D%0A%0APlease%20fix%20the%20game!%0A%0AThanks%2C%0A%5BYour%20Name%5D">contact our support team</a></strong>. Tell them to <strong>FIX THE GAME!</strong> They love a good mystery (and are fueled by caffeine and bug spray).
+            </li>
+        </ul>
+
+        <a href="/" class="action-button">Return to Vixel Games HQ</a>
+
+        <footer>
+            <p>&copy; 2023 Vixel Games. We promise we're working hard. Probably. Don't tell the server hamsters.</p>
+        </footer>
+    </div>
+</body>
+</html>
